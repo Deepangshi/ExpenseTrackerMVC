@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Expense_Tracker.Models.Transaction>
+
+@{
+    ViewData["PageTitle"] = "Transactions";
+    //ViewData["PageActionText"] = "+ New Transactions";
+    //ViewData["PageActionUrl"] = "/Transaction/AddOrEdit";
+}
+
+
+<div class="indexhere widget row mt-5">
+    <p class="mt-3 mb-3">
+    <a class="btn btn-primary" asp-action="Create">
+         <i class="bi bi-plus-lg"></i> New Transaction
+    </a>
+</p>
+
+
+
+    <div class="col">
+        <ejs-grid id="transactions" dataSource="@Model" gridLines="None" 
+        allowSorting="true" allowPaging="true">
+            <e-grid-pagesettings pageSize="10"></e-grid-pagesettings>
+            <e-grid-columns>
+                <e-grid-column headerText="Category" field="CategoryTitleWithIcon"></e-grid-column>
+                <e-grid-column headerText="Date" field="Date" type="date" format="MMM-dd-yyyy"></e-grid-column>
+                <e-grid-column headerText="Amount" field="FormattedAmount"></e-grid-column>
+                <e-grid-column headerText="Actions" template="#actionColumnTemplate"></e-grid-column>
+            </e-grid-columns>
+        </ejs-grid>
+    </div>
+</div>
+
+ 
+
+<script id="actionColumnTemplate" type="text/x-template">
+    <div class="d-flex flex-row justify-content-start">
+         <a class="btn btn-sm no-a-decoration" href="/Transaction/Edit/${TransactionId}">
+             <i class="bi bi-pencil-fill"></i>
+         </a>
+         <form action="/Transaction/Delete/${TransactionId}" method="post">
+             @Html.AntiForgeryToken()
+           <button type="submit" class="btn btn-sm no-a-decoration" 
+           onclick="return confirm(&quot;Are you sure to delete record?&quot;)">
+             <i class="bi bi-trash text-danger"></i>
+         </button>
+         </form>
+    </div>
+</script>
