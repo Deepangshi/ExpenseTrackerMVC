@@ -21,7 +21,7 @@
     @* sidebar *@
     <partial name="_SideBar" />
 
-    <header>
+    @* <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Expense_Tracker</a>
@@ -38,7 +38,20 @@
                 </div>
             </div>
         </nav>
-    </header>
+    </header> *@
+
+    @* navbar *@
+    <nav class="navbar sticky-top">
+        <div class="container-fluid py-2 px-4">
+            <i class="bi bi-search"></i>
+           <div>
+                <i class="bi bi-bell-fill"></i>
+                <i class="bi bi-envelope-fill"></i>
+                <i class="bi bi-person-circle"></i>
+                @* <img class="profile-pic" src="" /> *@
+           </div>
+        </div>
+    </nav>
 
     <div class="main-content">
     <div class="container">

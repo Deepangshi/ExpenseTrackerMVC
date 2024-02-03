@@ -2,7 +2,70 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-}
-<ejs-sidebar id="sidebar" width="300px">
+    List<Object> menuItems = new List<Object>();
 
+    menuItems.Add(new
+    {
+        text = "General",
+        separator = true,
+    });
+    menuItems.Add(new
+    {
+        text = "Dashboard",
+        url = "/",
+        iconCss = "bi bi-box2-fill",
+    });
+
+    menuItems.Add(new
+    {
+    text = "Categories",
+    url = "/Category",
+    iconCss = "bi bi-folder-fill",
+    });
+
+    menuItems.Add(new
+    {
+        text = "Transactions",
+        url = "/Transaction",
+        iconCss = "bi bi-arrow-left-right"
+    });
+
+    menuItems.Add(new
+    {
+        text = "Extras",
+        separator = true,
+    });
+
+    menuItems.Add(new
+    {
+        text = "Reports",
+        url = "#",
+        iconCss = "bi bi-bar-chart-fill"
+    });
+
+    menuItems.Add(new
+    {
+        text = "Settings",
+        url = "#",
+        iconCss = "bi bi-gear"
+    });
+}
+<ejs-sidebar id="sidebar" width="300px" enableDock>
+    <e-content-template>
+        <div class="logo-wrapper">
+            <div class="app-logo">
+                <span>Expense</span>
+            </div>
+        </div>
+
+        <div class="profile-wrapper">
+            <i class="bi bi-person-circle profile-pic"></i>
+            <div class="titles d-flex flex-column ps-3">
+                <h5 class="mb-0">Expense Tracker App</h5>
+                <span class="text-muted">Pofile Picture</span>
+            </div>
+        </div>
+
+        <ejs-menu id="menu" items="menuItems" orientation="Vertical" hamburgerMode></ejs-menu>
+    </e-content-template>
 </ejs-sidebar>
